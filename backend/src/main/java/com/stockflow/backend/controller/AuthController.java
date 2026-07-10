@@ -26,32 +26,25 @@ public class AuthController {
     private final JwtService jwtService;
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@Valid @RequestBody LoginRequest request) {
-        try {
-            Authentication authentication = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(
-                            request.getEmail(),
-                            request.getPassword()
-                    )
-            );
+    public ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest request) {
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        request.getEmail(),
+                        request.getPassword()
+                )
+        );
 
-            User user = (User) authentication.getPrincipal();
+        User user = (User) authentication.getPrincipal();
+        String token = jwtService.generateToken(user);
 
-            String token = jwtService.generateToken(user);
+        LoginResponse response = new LoginResponse(
+                token,
+                user.getId(),
+                user.getName(),
+                user.getEmail(),
+                user.getRole().getName()
+        );
 
-            LoginResponse response = new LoginResponse(
-                    token,
-                    user.getId(),
-                    user.getName(),
-                    user.getEmail(),
-                    user.getRole().getName()
-            );
-
-            return ResponseEntity.ok(response);
-
-        } catch (BadCredentialsException e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body("Email o contraseña incorrectos");
-        }
+        return ResponseEntity.ok(response);
     }
 }
