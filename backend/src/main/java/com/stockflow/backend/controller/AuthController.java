@@ -3,7 +3,7 @@ package com.stockflow.backend.controller;
 import com.stockflow.backend.dto.LoginRequest;
 import com.stockflow.backend.dto.LoginResponse;
 import com.stockflow.backend.entity.User;
-import com.stockflow.backend.config.JwtService;
+import com.stockflow.backend.service.JwtService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
