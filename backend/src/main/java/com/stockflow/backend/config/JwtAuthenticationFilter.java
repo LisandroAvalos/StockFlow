@@ -1,6 +1,7 @@
 package com.stockflow.backend.config;
 
 import com.stockflow.backend.repository.UserRepository;
+import com.stockflow.backend.service.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

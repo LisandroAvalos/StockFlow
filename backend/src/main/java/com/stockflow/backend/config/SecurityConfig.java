@@ -1,5 +1,6 @@
 package com.stockflow.backend.config;
 
+import com.stockflow.backend.service.CustomUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

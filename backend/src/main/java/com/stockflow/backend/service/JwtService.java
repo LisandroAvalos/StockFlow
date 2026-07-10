@@ -1,4 +1,4 @@
-package com.stockflow.backend.config;
+package com.stockflow.backend.service;
 
 import com.stockflow.backend.entity.User;
 import io.jsonwebtoken.Claims;

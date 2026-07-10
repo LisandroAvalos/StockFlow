@@ -1,6 +1,5 @@
-package com.stockflow.backend.config;
+package com.stockflow.backend.service;
 
-import com.stockflow.backend.entity.User;
 import com.stockflow.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
