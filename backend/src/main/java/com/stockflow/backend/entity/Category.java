@@ -19,4 +19,7 @@ public class Category {
 
     @Column(nullable = false, unique = true)
     String name;
+
+    @Column(nullable = false)
+    boolean active = true;
 }
