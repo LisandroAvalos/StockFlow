@@ -38,7 +38,7 @@ public class Product {
     private int stock;
 
     @Column(name = "stock_min", nullable = false)
-    private int stockMin;
+    private int minStock;
 
     @Column(nullable = false)
     private boolean active = true;
