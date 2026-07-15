@@ -13,7 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SupplierService {
 
-    final SupplierRepository supplierRepository;
+    private final SupplierRepository supplierRepository;
 
     public List<Supplier> getAllSuppliers(){
         return supplierRepository.findByActiveTrue();
