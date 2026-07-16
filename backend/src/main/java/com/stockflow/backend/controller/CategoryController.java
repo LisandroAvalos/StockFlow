@@ -3,6 +3,7 @@ package com.stockflow.backend.controller;
 import com.stockflow.backend.dto.CategoryRequest;
 import com.stockflow.backend.dto.CategoryResponse;
 import com.stockflow.backend.entity.Category;
+import com.stockflow.backend.mapper.CategoryMapper;
 import com.stockflow.backend.service.CategoryService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -18,11 +19,12 @@ import java.util.List;
 public class CategoryController {
 
     private final CategoryService categoryService;
+    private final CategoryMapper categoryMapper;
 
     @GetMapping
     public ResponseEntity<List<CategoryResponse>> getAllCategories(){
         List<CategoryResponse> categories = categoryService.getAllCategories().stream()
-                .map(this::toResponse)
+                .map(categoryMapper::toResponse)
                 .toList();
         return ResponseEntity.ok(categories);
     }
@@ -30,38 +32,30 @@ public class CategoryController {
     @GetMapping("/id/{id}")
     public ResponseEntity<CategoryResponse> getCategoryById(@PathVariable Long id){
         Category category = categoryService.getCategoryById(id);
-        return ResponseEntity.ok(toResponse(category));
+        return ResponseEntity.ok(categoryMapper.toResponse(category));
     }
 
     @GetMapping("/name/{name}")
     public ResponseEntity<CategoryResponse> getCategoryByName(@PathVariable String name) {
         Category category = categoryService.getCategoryByName(name);
-        return ResponseEntity.ok(toResponse(category));
+        return ResponseEntity.ok(categoryMapper.toResponse(category));
     }
 
     @PostMapping
     public ResponseEntity<CategoryResponse> createCategory(@Valid @RequestBody CategoryRequest categoryRequest){
         Category category = categoryService.saveCategory(categoryRequest);
-        return ResponseEntity.status(HttpStatus.CREATED).body(toResponse(category));
+        return ResponseEntity.status(HttpStatus.CREATED).body(categoryMapper.toResponse(category));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<CategoryResponse> updateCategory(@PathVariable Long id, @Valid @RequestBody CategoryRequest categoryRequest){
         Category category = categoryService.updateCategory(id, categoryRequest);
-        return ResponseEntity.ok(toResponse(category));
+        return ResponseEntity.ok(categoryMapper.toResponse(category));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<CategoryResponse> deleteCategory(@PathVariable Long id) {
         Category category = categoryService.softDeleteById(id);
-        return ResponseEntity.ok(toResponse(category));
-    }
-
-    private CategoryResponse toResponse(Category category){
-        CategoryResponse categoryResponse = new CategoryResponse();
-        categoryResponse.setId(category.getId());
-        categoryResponse.setName(category.getName());
-        categoryResponse.setActive(category.isActive());
-        return categoryResponse;
+        return ResponseEntity.ok(categoryMapper.toResponse(category));
     }
 }
