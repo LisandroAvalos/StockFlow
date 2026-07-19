@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Locale;
 
 @Service
 @RequiredArgsConstructor
@@ -66,7 +65,6 @@ public class ProductService {
         product.setDescription(productRequest.getDescription());
         product.setPrice(productRequest.getPrice());
         product.setOfferPrice(productRequest.getOfferPrice());
-        product.setStock(productRequest.getStock());
         product.setMinStock(productRequest.getMinStock());
         product.setCategory(category);
         product.setSupplier(supplier);
@@ -85,7 +83,6 @@ public class ProductService {
         product.setDescription(productRequest.getDescription());
         product.setPrice(productRequest.getPrice());
         product.setOfferPrice(productRequest.getOfferPrice());
-        product.setStock(productRequest.getStock());
         product.setMinStock(productRequest.getMinStock());
         product.setCategory(category);
         product.setSupplier(supplier);

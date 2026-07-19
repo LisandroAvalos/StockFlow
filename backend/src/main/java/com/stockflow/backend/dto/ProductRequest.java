@@ -31,9 +31,6 @@ public class ProductRequest {
 
     private BigDecimal offerPrice;
 
-    @PositiveOrZero(message = "El stock debe ser mayor o igual a 0")
-    private int stock;
-
     @PositiveOrZero(message = "El stock minimo debe ser mayor o igual a 0")
     private int minStock;
 
