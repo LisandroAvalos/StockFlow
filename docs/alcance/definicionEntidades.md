@@ -16,18 +16,20 @@
 - nombre
 - email
 - telefono
+- activo (baja lógica)
 
 ### Categoria
 - id
 - nombre
+- activo (baja lógica)
 
 ### Producto
 - id
 - nombre
-- codigo
+- codigo (String, único)
 - descripcion
-- precio
-- precioOferta (nullable)
+- precio (BigDecimal)
+- precioOferta (BigDecimal, nullable)
 - stockActual
 - stockMinimo (para el aviso)
 - activo (baja lógica)

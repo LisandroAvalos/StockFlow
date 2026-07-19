@@ -31,3 +31,16 @@ StockFlow/
 
 ## Estado del proyecto
 En desarrollo.
+
+### Completado
+- Autenticación JWT (login, roles ADMIN/EMPLOYEE, endpoints protegidos por rol)
+- Manejo global de excepciones (GlobalExceptionHandler)
+- Gestión de categorías (CRUD + soft delete)
+- Gestión de proveedores (CRUD + soft delete)
+- Gestión de productos (CRUD + soft delete, búsqueda por nombre/código/categoría/proveedor/rango de precio, reporte de bajo stock)
+
+### En progreso / próximos pasos
+- Gestión de stock (ingresos, ajustes, historial de movimientos)
+- Ventas (crear venta, detalle de venta, descuento automático de stock)
+- Reportes (ventas por período, productos más vendidos)
+- Frontend (React)

@@ -12,7 +12,8 @@
 - Alta de productos.
 - Baja lógica de productos.
 - Modificación de productos.
-- Búsqueda por nombre, código o categoría.
+- Búsqueda por nombre, código, categoría o proveedor.
+- Búsqueda por rango de precio.
 - Stock mínimo configurable.
 - Precio de venta y precio de oferta (opcional).
 - Un proveedor por producto.
