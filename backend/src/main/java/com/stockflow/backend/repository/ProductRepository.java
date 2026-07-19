@@ -19,6 +19,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     Optional<Product> findByCode(String code);
     List<Product> findByPriceBetween(BigDecimal minPrice, BigDecimal maxPrice);
 
-    @Query("SELECT p FROM Product p WHERE p.stock <= p.stockMin AND p.active = true")
+    @Query("SELECT p FROM Product p WHERE p.stock <= p.minStock AND p.active = true")
     List<Product> findLowStockProducts();
 }

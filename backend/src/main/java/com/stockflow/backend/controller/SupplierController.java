@@ -35,8 +35,8 @@ public class SupplierController {
         return ResponseEntity.ok(supplierMapper.toResponse(supplier));
     }
 
-    @GetMapping("/name/{name}")
-    public ResponseEntity<SupplierResponse> getSupplierByName(@PathVariable String name){
+    @GetMapping("/name")
+    public ResponseEntity<SupplierResponse> getSupplierByName(@RequestParam String name){
         Supplier supplier = supplierService.getSupplierByName(name);
         return ResponseEntity.ok(supplierMapper.toResponse(supplier));
     }
