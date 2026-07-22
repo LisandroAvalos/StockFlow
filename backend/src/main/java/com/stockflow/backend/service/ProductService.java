@@ -1,5 +1,6 @@
 package com.stockflow.backend.service;
 
+import com.stockflow.backend.dto.ProductCreateRequest;
 import com.stockflow.backend.dto.ProductRequest;
 import com.stockflow.backend.entity.Category;
 import com.stockflow.backend.entity.Product;
@@ -54,7 +55,7 @@ public class ProductService {
         return productRepository.findLowStockProducts();
     }
 
-    public  Product saveProduct(ProductRequest productRequest){
+    public  Product saveProduct(ProductCreateRequest productRequest){
 
         Category category = categoryService.getCategoryById(productRequest.getCategoryId());
         Supplier supplier = supplierService.getSupplierById(productRequest.getSupplierId());
@@ -69,6 +70,10 @@ public class ProductService {
         product.setCategory(category);
         product.setSupplier(supplier);
 
+        return productRepository.save(product);
+    }
+
+    public Product save(Product product){
         return productRepository.save(product);
     }
 

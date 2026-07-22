@@ -1,14 +1,18 @@
 package com.stockflow.backend.controller;
 
+import com.stockflow.backend.dto.ProductCreateRequest;
 import com.stockflow.backend.dto.ProductRequest;
 import com.stockflow.backend.dto.ProductResponse;
 import com.stockflow.backend.entity.Product;
+import com.stockflow.backend.entity.User;
 import com.stockflow.backend.mapper.ProductMapper;
 import com.stockflow.backend.service.ProductService;
+import com.stockflow.backend.service.StockMovementService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -21,6 +25,7 @@ public class ProductController {
 
     private final ProductService productService;
     private final ProductMapper productMapper;
+    private final StockMovementService stockMovementService;
 
     @GetMapping
     public ResponseEntity<List<ProductResponse>> getAllProducts() {
@@ -83,8 +88,9 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<ProductResponse> createProduct(@Valid @RequestBody ProductRequest productRequest){
-        Product product = productService.saveProduct(productRequest);
+    public ResponseEntity<ProductResponse> createProduct(@Valid @RequestBody ProductCreateRequest request, Authentication authentication) {
+        User user = (User) authentication.getPrincipal();
+        Product product = stockMovementService.createProductWithInitialStock(request, user);
         return ResponseEntity.status(HttpStatus.CREATED).body(productMapper.toResponse(product));
     }
 
