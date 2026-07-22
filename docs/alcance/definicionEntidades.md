@@ -30,7 +30,7 @@
 - descripcion
 - precio (BigDecimal)
 - precioOferta (BigDecimal, nullable)
-- stockActual
+- stockActual (solo se modifica a través de MovimientoStock; nace en 0 y se carga con el stock inicial al momento de la creación)
 - stockMinimo (para el aviso)
 - activo (baja lógica)
 - categoria (ManyToOne → Categoria)

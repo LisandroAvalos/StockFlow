@@ -31,6 +31,8 @@
 - Ajustes manuales de stock positivos y negativos (solo ADMIN) (tipo: AJUSTE_POSITIVO, AJUSTE_NEGATIVO).
 - Descuento automático de stock al confirmar una venta (tipo: VENTA).
 - Historial de movimientos con tipo, cantidad, fecha y usuario.
+- Al crear un producto, se puede indicar un stock inicial, que genera automáticamente un movimiento de tipo COMPRA.
+- Validación de stock insuficiente al realizar un ajuste negativo.
 
 ### Ventas
 - Crear una venta con uno o más detalles.
