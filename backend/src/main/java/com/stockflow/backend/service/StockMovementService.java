@@ -23,10 +23,22 @@ public class StockMovementService {
     public StockMovement registerEntry(StockMovementRequest request, User user){
         Product product = productService.getProductById(request.getProductId());
 
-        product.setStock(request.getQuantity() + product.getStock());
+        product.setStock(product.getStock() + request.getQuantity());
         productService.save(product);
 
-        StockMovement movement = buildMovement(request, product, user, StockMovement.StockMovementType.COMPRA);
+        StockMovement movement = buildMovement(request.getQuantity(), product, user, StockMovement.StockMovementType.COMPRA);
+        return stockMovementRepository.save(movement);
+    }
+
+    public StockMovement registerSale(Product product, int quantity, User user){
+        if (product.getStock() < quantity) {
+            throw new IllegalArgumentException("Stock insuficiente para completar la venta del producto: " + product.getName());
+        }
+
+        product.setStock(product.getStock() - quantity);
+        productService.save(product);
+
+        StockMovement movement = buildMovement(quantity, product, user, StockMovement.StockMovementType.VENTA);
         return stockMovementRepository.save(movement);
     }
 
@@ -35,7 +47,7 @@ public class StockMovementService {
         product.setStock(product.getStock() + request.getQuantity());
         productService.save(product);
 
-        StockMovement movement = buildMovement(request, product, user, StockMovement.StockMovementType.AJUSTE_POSITIVO);
+        StockMovement movement = buildMovement(request.getQuantity(), product, user, StockMovement.StockMovementType.AJUSTE_POSITIVO);
         return stockMovementRepository.save(movement);
     }
 
@@ -49,7 +61,7 @@ public class StockMovementService {
         product.setStock(product.getStock() - request.getQuantity());
         productService.save(product);
 
-        StockMovement movement = buildMovement(request, product, user, StockMovement.StockMovementType.AJUSTE_NEGATIVO);
+        StockMovement movement = buildMovement(request.getQuantity(), product, user, StockMovement.StockMovementType.AJUSTE_NEGATIVO);
         return stockMovementRepository.save(movement);
     }
 
@@ -65,9 +77,9 @@ public class StockMovementService {
         return productService.getProductById(product.getId());
     }
 
-    private StockMovement buildMovement(StockMovementRequest request, Product product, User user, StockMovement.StockMovementType type) {
+    private StockMovement buildMovement(int quantity, Product product, User user, StockMovement.StockMovementType type) {
         StockMovement movement = new StockMovement();
-        movement.setQuantity(request.getQuantity());
+        movement.setQuantity(quantity);
         movement.setType(type);
         movement.setProduct(product);
         movement.setUser(user);
