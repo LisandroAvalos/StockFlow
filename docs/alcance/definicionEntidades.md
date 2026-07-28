@@ -39,8 +39,8 @@
 ### Venta
 - id
 - fecha
-- total
-- descuentoTotal (nullable)
+- total (calculado; suma de subtotales netos de todos los detalles)
+- descuentoTotal (calculado; suma de los descuentos aplicados en los detalles, nunca nulo)
 - usuario (ManyToOne → Usuario)
 
 ### DetalleVenta
@@ -48,8 +48,8 @@
 - venta (ManyToOne → Venta)
 - producto (ManyToOne → Producto)
 - cantidad
-- precioUnitario
-- descuento (nullable)
+- precioUnitario (tomado del producto al momento de la venta — usa precioOferta si existe, si no precio; nunca lo envía el cliente)
+- descuento (porcentaje, nullable en el request pero siempre se guarda un valor, 0 por defecto)
 
 ### MovimientoStock
 - id

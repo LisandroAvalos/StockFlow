@@ -36,9 +36,12 @@
 
 ### Ventas
 - Crear una venta con uno o más detalles.
-- Cada detalle incluye: producto, cantidad, precio unitario original y descuento (si aplica).
-- Total de la venta calculado automáticamente como suma de los detalles.
-- Descontar stock automáticamente al confirmar la venta.
+- Cada detalle incluye: producto, cantidad y descuento (opcional, en porcentaje).
+- El precio unitario de cada detalle se toma automáticamente del producto (precio de oferta si existe, si no el precio de lista); nunca se recibe del cliente.
+- Total de la venta calculado automáticamente como suma de los subtotales netos (ya con descuento aplicado) de cada detalle.
+- Descuento total de la venta calculado automáticamente como suma de los montos descontados en cada detalle.
+- Descontar stock automáticamente al confirmar la venta, generando un MovimientoStock de tipo VENTA por cada detalle.
+- Validación de stock insuficiente al confirmar una venta.
 - Registrar fecha y usuario que realizó la venta.
 
 ### Reportes básicos

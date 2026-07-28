@@ -39,8 +39,8 @@ En desarrollo.
 - Gestión de proveedores (CRUD + soft delete)
 - Gestión de productos (CRUD + soft delete, búsqueda por nombre/código/categoría/proveedor/rango de precio, reporte de bajo stock)
 - Gestión de stock (ingreso de mercadería, ajustes positivos/negativos, historial de movimientos, stock inicial al crear un producto)
+- Ventas (creación con múltiples detalles, precio tomado del producto, descuentos por línea, cálculo automático de totales, descuento automático de stock)
 
 ### En progreso / próximos pasos
-- Ventas (crear venta, detalle de venta, descuento automático de stock)
 - Reportes (ventas por período, productos más vendidos)
 - Frontend (React)
