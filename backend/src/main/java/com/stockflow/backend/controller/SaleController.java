@@ -1,5 +1,6 @@
 package com.stockflow.backend.controller;
 
+import com.stockflow.backend.dto.BestSellingProductResponse;
 import com.stockflow.backend.dto.SaleRequest;
 import com.stockflow.backend.dto.SaleResponse;
 import com.stockflow.backend.entity.Sale;
@@ -35,7 +36,6 @@ public class SaleController {
     @GetMapping("/{id}")
     public ResponseEntity<SaleResponse> getSaleById(@PathVariable Long id){
         Sale sale = saleService.getSaleById(id);
-
         return ResponseEntity.ok(saleMapper.toResponse(sale));
     }
 
@@ -55,11 +55,15 @@ public class SaleController {
         return ResponseEntity.ok(responses);
     }
 
+    @GetMapping("/best-selling")
+    public ResponseEntity<List<BestSellingProductResponse>> getBestSellingProducts(){
+        return ResponseEntity.ok(saleService.getBestSellingProducts());
+    }
+
     @PostMapping
     public ResponseEntity<SaleResponse> createSale(@Valid @RequestBody SaleRequest request, Authentication authentication){
         User user = (User) authentication.getPrincipal();
         Sale sale = saleService.createSale(request, user);
-
         return ResponseEntity.status(HttpStatus.CREATED).body(saleMapper.toResponse(sale));
     }
 }

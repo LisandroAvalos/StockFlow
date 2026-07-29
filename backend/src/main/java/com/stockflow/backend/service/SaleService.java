@@ -1,5 +1,6 @@
 package com.stockflow.backend.service;
 
+import com.stockflow.backend.dto.BestSellingProductResponse;
 import com.stockflow.backend.dto.SaleDetailRequest;
 import com.stockflow.backend.dto.SaleRequest;
 import com.stockflow.backend.entity.Product;
@@ -7,9 +8,12 @@ import com.stockflow.backend.entity.Sale;
 import com.stockflow.backend.entity.SaleDetail;
 import com.stockflow.backend.entity.User;
 import com.stockflow.backend.exception.ResourceNotFoundException;
+import com.stockflow.backend.mapper.ProductMapper;
 import com.stockflow.backend.repository.SaleDetailRepository;
 import com.stockflow.backend.repository.SaleRepository;
+import com.stockflow.backend.repository.projection.BestSellingProduct;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,6 +30,7 @@ public class SaleService {
     private final SaleDetailRepository saleDetailRepository;
     private final ProductService productService;
     private final StockMovementService stockMovementService;
+    private final ProductMapper productMapper;
 
     @Transactional
     public Sale createSale (SaleRequest request, User user){
@@ -89,5 +94,16 @@ public class SaleService {
 
     public List<SaleDetail> getDetailsByProductId(Long productId) {
         return saleDetailRepository.findByProductId(productId);
+    }
+
+    public List<BestSellingProductResponse> getBestSellingProducts() {
+        List<BestSellingProduct> results = saleDetailRepository.findMostSoldProducts(PageRequest.of(0, 10));
+
+        return results.stream()
+                .map(result -> new BestSellingProductResponse(
+                        productMapper.toResponse(result.getProduct()),
+                        result.getTotalSold()
+                ))
+                .toList();
     }
 }
