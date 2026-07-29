@@ -3,7 +3,7 @@
 ### Usuario y Seguridad
 - Inicio de sesión.
 - Roles (ADMIN, EMPLEADO).
-- Gestión de usuarios (solo ADMIN).
+- Gestión de usuarios (solo ADMIN): alta (todo usuario nace con rol EMPLEADO), listado (todos o solo activos), consulta por id, cambio de rol, baja lógica.
 - Permisos por rol:
   - ADMIN: acceso completo.
   - EMPLEADO: puede registrar ventas y ver reportes.
@@ -45,6 +45,6 @@
 - Registrar fecha y usuario que realizó la venta.
 
 ### Reportes básicos
-- Productos con bajo stock.
-- Ventas por período.
-- Productos más vendidos.
+- Productos con bajo stock: productos cuyo stock actual es menor o igual al stock mínimo configurado.
+- Ventas por período: consulta de ventas filtrando por rango de fechas.
+- Productos más vendidos: top 10 productos ordenados por cantidad total vendida (suma de todas las líneas de venta de cada producto).

@@ -8,8 +8,9 @@
 - id
 - nombre
 - email
-- password
-- rol (ManyToOne → Rol)
+- password (hasheado con BCrypt; nunca se expone en las respuestas de la API)
+- activo (baja lógica)
+- rol (ManyToOne → Rol; todo usuario nace como EMPLEADO, el cambio a ADMIN se hace con un endpoint separado)
 
 ### Proveedor
 - id
