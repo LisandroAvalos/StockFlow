@@ -20,7 +20,10 @@ public class DataInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) {
         Role adminRole = roleRepository.findByName("ADMIN")
-                .orElseGet(() -> roleRepository.save(new Role(null, "ADMIN")));
+            .orElseGet(() -> roleRepository.save(new Role(null, "ADMIN")));
+
+        Role employeeRole = roleRepository.findByName("EMPLEADO")
+                .orElseGet(() -> roleRepository.save(new Role(null, "EMPLEADO")));
 
         if (userRepository.findByEmail("admin@stockflow.com").isEmpty()) {
             User admin = new User();
