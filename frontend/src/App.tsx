@@ -1,11 +1,35 @@
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Login from './features/auth/pages/Login';
+import Dashboard from './features/home/pages/Dashboard';
+import Usuarios from './features/admin/pages/Usuarios';
+import PrivateRoute from './routes/PrivateRoute';
+import AdminRoute from './routes/AdminRoute';
+
 function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <h1 className="text-4xl font-bold text-purple-600">
-        StockFlow funcionando con Tailwind 🎉
-      </h1>
-    </div>
-  )
+    <Routes>
+      <Route path="/" element={<Navigate to="/dashboard" replace />} />
+      <Route path="/login" element={<Login />} />
+
+      <Route
+        path="/dashboard"
+        element={
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/usuarios"
+        element={
+          <AdminRoute>
+            <Usuarios />
+          </AdminRoute>
+        }
+      />
+    </Routes>
+  );
 }
 
-export default App
+export default App;
