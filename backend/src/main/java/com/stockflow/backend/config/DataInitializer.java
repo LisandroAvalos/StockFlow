@@ -20,7 +20,7 @@ public class DataInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) {
         Role adminRole = roleRepository.findByName("ADMIN")
-            .orElseGet(() -> roleRepository.save(new Role(null, "ADMIN")));
+                .orElseGet(() -> roleRepository.save(new Role(null, "ADMIN")));
 
         Role employeeRole = roleRepository.findByName("EMPLEADO")
                 .orElseGet(() -> roleRepository.save(new Role(null, "EMPLEADO")));
@@ -34,6 +34,17 @@ public class DataInitializer implements CommandLineRunner {
             admin.setActive(true);
 
             userRepository.save(admin);
+        }
+
+        if (userRepository.findByEmail("empleado@stockflow.com").isEmpty()) {
+            User empleado = new User();
+            empleado.setName("Empleado");
+            empleado.setEmail("empleado@stockflow.com");
+            empleado.setPassword(passwordEncoder.encode("empleado123"));
+            empleado.setRole(employeeRole);
+            empleado.setActive(true);
+
+            userRepository.save(empleado);
         }
     }
 }
