@@ -1,21 +1,16 @@
 import { useAuth } from '../../../context/AuthContext';
 
 export default function Dashboard() {
-  const { usuario, logout } = useAuth();
+  const { usuario } = useAuth();
 
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <div className="text-center">
-        <p className="text-lg">
-          Bienvenido, <strong>{usuario?.nombre}</strong> ({usuario?.rol})
-        </p>
-        <button
-          onClick={logout}
-          className="mt-4 rounded bg-red-600 px-4 py-2 text-white hover:bg-red-700"
-        >
-          Cerrar sesión
-        </button>
-      </div>
+    <div className="p-8">
+      <h1 className="text-2xl font-bold">
+        Bienvenido, {usuario?.nombre}
+      </h1>
+      <p className="mt-2 text-gray-600">
+        Placeholder — acá van los indicadores generales del negocio.
+      </p>
     </div>
   );
 }
