@@ -29,6 +29,7 @@ public class SecurityConfig {
     private final CustomUserDetailsService userDetailsService;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final PasswordEncoder passwordEncoder;
+    private final CustomAuthenticationEntryPoint customAuthenticationEntryPoint; // NUEVO
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -37,6 +38,8 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .exceptionHandling(ex ->
+                        ex.authenticationEntryPoint(customAuthenticationEntryPoint)) // NUEVO
                 .authorizeHttpRequests(auth -> auth
                         // Públicos
                         .requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
