@@ -1,7 +1,10 @@
+import { Link } from 'react-router-dom';
 import { useProducts } from '../../../hooks/useProducts';
+import { useAuth } from '../../../context/AuthContext';
 
 export default function Products() {
   const { data: products, isLoading, isError, error } = useProducts();
+  const { usuario } = useAuth();
 
   if (isLoading) {
     return <div className="p-8">Cargando productos...</div>;
@@ -17,7 +20,17 @@ export default function Products() {
 
   return (
     <div className="p-8">
-      <h1 className="text-2xl font-bold">Productos</h1>
+      <div className="flex items-center justify-between">
+        <h1 className="text-2xl font-bold">Productos</h1>
+        {usuario?.rol === 'ADMIN' && (
+          <Link
+            to="/productos/nuevo"
+            className="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+          >
+            Nuevo producto
+          </Link>
+        )}
+      </div>
 
       <table className="mt-4 w-full border-collapse text-left">
         <thead>

@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from './features/auth/pages/Login';
 import Dashboard from './features/home/pages/Dashboard';
 import Products from './features/products/pages/Products';
+import CreateProduct from './features/products/pages/CreateProduct';
 import Sales from './features/sales/pages/Sales';
 import Reports from './features/reports/pages/Reports';
 import Users from './features/admin/pages/Users';
@@ -24,6 +25,14 @@ function App() {
       >
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/productos" element={<Products />} />
+        <Route
+          path="/productos/nuevo"
+          element={
+            <AdminRoute>
+              <CreateProduct />
+            </AdminRoute>
+          }
+        />
         <Route path="/ventas" element={<Sales />} />
         <Route path="/reportes" element={<Reports />} />
         <Route
