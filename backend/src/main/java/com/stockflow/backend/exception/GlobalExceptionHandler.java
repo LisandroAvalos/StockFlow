@@ -1,5 +1,6 @@
 package com.stockflow.backend.exception;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -22,5 +23,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<String> handleIllegalArgument(IllegalArgumentException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<String> handleDataIntegrityViolation(DataIntegrityViolationException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body("Ya existe un registro con ese valor único (por ejemplo, el código de producto)");
     }
 }
