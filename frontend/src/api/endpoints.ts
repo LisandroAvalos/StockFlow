@@ -8,5 +8,13 @@ export const PRODUCT_ENDPOINTS = {
   // BY_CATEGORY, BY_SUPPLIER, PRICE_RANGE, LOW_STOCK, etc.
 };
 
+export const CATEGORY_ENDPOINTS = {
+  BASE: '/categories',
+};
+
+export const SUPPLIER_ENDPOINTS = {
+  BASE: '/suppliers',
+};
+
 // A medida que implementes otros dominios, sumás su grupo acá
 // siguiendo el mismo patrón (BASE + funciones para path variables).
