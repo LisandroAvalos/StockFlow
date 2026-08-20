@@ -28,6 +28,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<String> handleDataIntegrityViolation(DataIntegrityViolationException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body("Ya existe un registro con ese valor único (por ejemplo, el código de producto)");
+                .body("Ya existe un registro con ese valor único");
     }
 }
