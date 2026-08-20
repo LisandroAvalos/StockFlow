@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useProducts } from '../../../hooks/useProducts';
 import { useAuth } from '../../../context/AuthContext';
+import { getApiErrorMessage } from '../../../api/errorHandling';
 
 export default function Products() {
   const { data: products, isLoading, isError, error } = useProducts();
@@ -13,7 +14,7 @@ export default function Products() {
   if (isError) {
     return (
       <div className="p-8 text-red-600">
-        Error al cargar productos: {error.message}
+        Error al cargar productos: {getApiErrorMessage(error)}
       </div>
     );
   }
@@ -31,7 +32,6 @@ export default function Products() {
           </Link>
         )}
       </div>
-
       <table className="mt-4 w-full border-collapse text-left">
         <thead>
           <tr className="border-b">
