@@ -5,6 +5,8 @@ import Products from './features/products/pages/Products';
 import CreateProduct from './features/products/pages/CreateProduct';
 import Categories from './features/categories/pages/Categories';
 import CreateCategory from './features/categories/pages/CreateCategory';
+import Suppliers from './features/suppliers/pages/Suppliers';
+import CreateSupplier from './features/suppliers/pages/CreateSupplier';
 import Sales from './features/sales/pages/Sales';
 import Reports from './features/reports/pages/Reports';
 import Users from './features/admin/pages/Users';
@@ -41,6 +43,15 @@ function App() {
           element={
             <AdminRoute>
               <CreateCategory />
+            </AdminRoute>
+          }
+        />
+        <Route path="/proveedores" element={<Suppliers />} />
+        <Route
+          path="/proveedores/nuevo"
+          element={
+            <AdminRoute>
+              <CreateSupplier />
             </AdminRoute>
           }
         />
