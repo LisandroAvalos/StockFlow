@@ -10,6 +10,7 @@ interface NavLinkConfig {
 const NAV_LINKS: NavLinkConfig[] = [
   { label: 'Dashboard', path: '/dashboard', roles: ['ADMIN', 'EMPLEADO'] },
   { label: 'Productos', path: '/productos', roles: ['ADMIN', 'EMPLEADO'] },
+  { label: 'Categorías', path: '/categorias', roles: ['ADMIN', 'EMPLEADO'] },
   { label: 'Ventas', path: '/ventas', roles: ['ADMIN', 'EMPLEADO'] },
   { label: 'Reportes', path: '/reportes', roles: ['ADMIN', 'EMPLEADO'] },
   { label: 'Usuarios', path: '/usuarios', roles: ['ADMIN'] },

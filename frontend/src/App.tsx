@@ -3,6 +3,8 @@ import Login from './features/auth/pages/Login';
 import Dashboard from './features/home/pages/Dashboard';
 import Products from './features/products/pages/Products';
 import CreateProduct from './features/products/pages/CreateProduct';
+import Categories from './features/categories/pages/Categories';
+import CreateCategory from './features/categories/pages/createCategory';
 import Sales from './features/sales/pages/Sales';
 import Reports from './features/reports/pages/Reports';
 import Users from './features/admin/pages/Users';
@@ -30,6 +32,15 @@ function App() {
           element={
             <AdminRoute>
               <CreateProduct />
+            </AdminRoute>
+          }
+        />
+        <Route path="/categorias" element={<Categories />} />
+        <Route
+          path="/categorias/nueva"
+          element={
+            <AdminRoute>
+              <CreateCategory />
             </AdminRoute>
           }
         />
