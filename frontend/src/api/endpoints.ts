@@ -13,3 +13,7 @@ export const CATEGORY_ENDPOINTS = {
 export const SUPPLIER_ENDPOINTS = {
   BASE: '/suppliers',
 };
+
+export const SALE_ENDPOINTS = {
+  BASE: '/sales',
+};
