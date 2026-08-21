@@ -1,16 +1,5 @@
-export interface CategoryResponse {
-  id: number;
-  name: string;
-  active: boolean;
-}
-
-export interface SupplierResponse {
-  id: number;
-  name: string;
-  telephone: string;
-  email: string;
-  active: boolean;
-}
+import type { CategoryResponse } from './category';
+import type { SupplierResponse } from './supplier';
 
 export interface ProductResponse {
   id: number;
