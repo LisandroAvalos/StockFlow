@@ -39,11 +39,11 @@ DELETE /products/{id} (ADMIN. Baja lógica)
 Nota de stock: El stock nunca se modifica vía PUT, únicamente por los endpoints de /stock o al crear el producto con initialStock.
 
 ## Gestión de stock
-GET /stock (ADMIN. Historial completo de movimientos)
-GET /stock/product/{productId} (ADMIN. Movimientos de un producto)
-GET /stock/user/{userId} (ADMIN. Movimientos de un usuario)
-GET /stock/type/{type} (ADMIN. Filtrar por tipo COMPRA, AJUSTE_POSITIVO, AJUSTE_NEGATIVO, VENTA)
-GET /stock/date?start=&end= (ADMIN. Filtrar por rango de fechas ISO LocalDateTime)
+GET /stock (Autenticado. Historial completo de movimientos)
+GET /stock/product/{productId} (Autenticado. Movimientos de un producto)
+GET /stock/user/{userId} (Autenticado. Movimientos de un usuario)
+GET /stock/type/{type} (Autenticado. Filtrar por tipo COMPRA, AJUSTE_POSITIVO, AJUSTE_NEGATIVO, VENTA)
+GET /stock/date?start=&end= (Autenticado. Filtrar por rango de fechas ISO LocalDateTime)
 POST /stock/entry (Autenticado. Registrar ingreso de mercadería con productId y quantity, genera tipo COMPRA)
 POST /stock/adjust/positive (ADMIN. Ajuste positivo con productId y quantity)
 POST /stock/adjust/negative (ADMIN. Ajuste negativo con productId y quantity, valida stock suficiente)
