@@ -134,19 +134,28 @@ export default function ProductDetail() {
             </table>
         )}
         {usuario?.rol === 'ADMIN' && (
-        <div className="mt-6">
+        <div className="mt-6 flex gap-3">
+            <button
+            onClick={() => navigate(`/productos/${productId}/editar`)}
+            className="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+            >
+            Editar producto
+            </button>
+
+            <div>
             {deleteProductMutation.isError && (
-            <p className="mb-2 text-sm text-red-600">
+                <p className="mb-2 text-sm text-red-600">
                 {getApiErrorMessage(deleteProductMutation.error)}
-            </p>
+                </p>
             )}
             <button
-            onClick={handleDelete}
-            disabled={deleteProductMutation.isPending}
-            className="rounded bg-red-600 px-4 py-2 text-white hover:bg-red-700 disabled:opacity-50"
+                onClick={handleDelete}
+                disabled={deleteProductMutation.isPending}
+                className="rounded bg-red-600 px-4 py-2 text-white hover:bg-red-700 disabled:opacity-50"
             >
-            {deleteProductMutation.isPending ? 'Eliminando...' : 'Eliminar producto'}
+                {deleteProductMutation.isPending ? 'Eliminando...' : 'Eliminar producto'}
             </button>
+            </div>
         </div>
         )}
         </div>
