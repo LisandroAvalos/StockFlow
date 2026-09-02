@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useProducts } from '../../../hooks/useProducts';
 import { useAuth } from '../../../context/AuthContext';
 import { getApiErrorMessage } from '../../../api/errorHandling';
 
 export default function Products() {
+  const navigate = useNavigate();
   const { data: products, isLoading, isError, error } = useProducts();
   const { usuario } = useAuth();
 
@@ -44,7 +46,7 @@ export default function Products() {
         </thead>
         <tbody>
           {products?.map((product) => (
-            <tr key={product.id} className="border-b">
+            <tr key={product.id} onClick={() => navigate(`/productos/${product.id}`)} className="cursor-pointer border-b hover:bg-gray-50" >
               <td className="py-2 pr-4">{product.name}</td>
               <td className="py-2 pr-4">{product.code}</td>
               <td className="py-2 pr-4">${product.price}</td>
