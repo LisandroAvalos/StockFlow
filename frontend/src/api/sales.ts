@@ -11,3 +11,8 @@ export async function createSale(data: SaleCreateRequest): Promise<SaleResponse>
   const response = await axiosClient.post<SaleResponse>(SALE_ENDPOINTS.BASE, data);
   return response.data;
 }
+
+export async function getSaleById(id: number): Promise<SaleResponse> {
+  const response = await axiosClient.get<SaleResponse>(SALE_ENDPOINTS.BY_ID(id));
+  return response.data;
+}
