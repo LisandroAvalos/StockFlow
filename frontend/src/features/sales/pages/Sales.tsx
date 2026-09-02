@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useSales } from '../../../hooks/useSales';
 import { getApiErrorMessage } from '../../../api/errorHandling';
 import { formatDate } from '../../../utils/formatDate';
 
 export default function Sales() {
+  const navigate = useNavigate();
   const { data: sales, isLoading, isError, error } = useSales();
 
   if (isLoading) {
@@ -43,7 +45,7 @@ export default function Sales() {
           {sales?.map((sale) => {
             const totalUnits = sale.details.reduce((sum, d) => sum + d.quantity, 0);
             return (
-              <tr key={sale.id} className="border-b">
+              <tr key={sale.id} onClick={() => navigate(`/ventas/${sale.id}`)} className="cursor-pointer border-b hover:bg-gray-50">
                 <td className="py-2 pr-4">{formatDate(sale.date)}</td>
                 <td className="py-2 pr-4">{sale.userName}</td>
                 <td className="py-2 pr-4">{totalUnits}</td>
