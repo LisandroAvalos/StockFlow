@@ -9,6 +9,7 @@ import Suppliers from './features/suppliers/pages/Suppliers';
 import CreateSupplier from './features/suppliers/pages/CreateSupplier';
 import Sales from './features/sales/pages/Sales';
 import CreateSale from './features/sales/pages/CreateSale';
+import SaleDetail from './features/sales/pages/SaleDetail';
 import Reports from './features/reports/pages/Reports';
 import Users from './features/admin/pages/Users';
 import Layout from './layout/Layout';
@@ -58,6 +59,7 @@ function App() {
         />
         <Route path="/ventas" element={<Sales />} />
         <Route path="/ventas/nueva" element={<CreateSale />} />
+        <Route path="/ventas/:id" element={<SaleDetail />} />
         <Route path="/reportes" element={<Reports />} />
         <Route
           path="/usuarios"
