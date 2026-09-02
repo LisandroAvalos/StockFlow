@@ -4,6 +4,11 @@ export const AUTH_ENDPOINTS = {
 
 export const PRODUCT_ENDPOINTS = {
   BASE: '/products',
+  BY_ID: (id: number) => `/products/id/${id}`,
+};
+
+export const STOCK_ENDPOINTS = {
+  BY_PRODUCT: (productId: number) => `/stock/product/${productId}`,
 };
 
 export const CATEGORY_ENDPOINTS = {
