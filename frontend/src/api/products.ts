@@ -16,3 +16,7 @@ export async function getProductById(id: number): Promise<ProductResponse> {
   const response = await axiosClient.get<ProductResponse>(PRODUCT_ENDPOINTS.BY_ID(id));
   return response.data;
 }
+
+export async function deleteProduct(id: number): Promise<void> {
+  await axiosClient.delete(PRODUCT_ENDPOINTS.MUTATE_BY_ID(id));
+}
