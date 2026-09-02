@@ -3,6 +3,7 @@ import Login from './features/auth/pages/Login';
 import Dashboard from './features/home/pages/Dashboard';
 import Products from './features/products/pages/Products';
 import CreateProduct from './features/products/pages/CreateProduct';
+import ProductDetail from './features/products/pages/ProductDetail';
 import Categories from './features/categories/pages/Categories';
 import CreateCategory from './features/categories/pages/CreateCategory';
 import Suppliers from './features/suppliers/pages/Suppliers';
@@ -39,6 +40,7 @@ function App() {
             </AdminRoute>
           }
         />
+        <Route path="/productos/:id" element={<ProductDetail />} />
         <Route path="/categorias" element={<Categories />} />
         <Route
           path="/categorias/nueva"
