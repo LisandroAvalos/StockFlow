@@ -16,4 +16,5 @@ export const SUPPLIER_ENDPOINTS = {
 
 export const SALE_ENDPOINTS = {
   BASE: '/sales',
+  BY_ID: (id: number) => `/sales/${id}`,
 };
