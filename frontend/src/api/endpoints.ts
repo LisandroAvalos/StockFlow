@@ -4,7 +4,8 @@ export const AUTH_ENDPOINTS = {
 
 export const PRODUCT_ENDPOINTS = {
   BASE: '/products',
-  BY_ID: (id: number) => `/products/id/${id}`,
+  BY_ID: (id: number) => `/products/id/${id}`,       
+  MUTATE_BY_ID: (id: number) => `/products/${id}`,
 };
 
 export const STOCK_ENDPOINTS = {
