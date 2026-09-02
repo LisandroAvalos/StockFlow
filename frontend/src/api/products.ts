@@ -11,3 +11,8 @@ export async function createProduct(data: ProductCreateRequest): Promise<Product
   const response = await axiosClient.post<ProductResponse>(PRODUCT_ENDPOINTS.BASE, data);
   return response.data;
 }
+
+export async function getProductById(id: number): Promise<ProductResponse> {
+  const response = await axiosClient.get<ProductResponse>(PRODUCT_ENDPOINTS.BY_ID(id));
+  return response.data;
+}
