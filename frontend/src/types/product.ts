@@ -26,3 +26,5 @@ export interface ProductCreateRequest {
   categoryId: number;
   supplierId: number;
 }
+
+export type ProductUpdateRequest = Omit<ProductCreateRequest, 'initialStock'>;
