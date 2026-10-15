@@ -11,3 +11,8 @@ export interface StockMovementResponse {
   userId: number;
   userName: string;
 }
+
+export interface StockMovementCreateRequest {
+  productId: number;
+  quantity: number;
+}
