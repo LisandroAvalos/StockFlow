@@ -10,6 +10,9 @@ export const PRODUCT_ENDPOINTS = {
 
 export const STOCK_ENDPOINTS = {
   BY_PRODUCT: (productId: number) => `/stock/product/${productId}`,
+  ENTRY: '/stock/entry',
+  ADJUST_POSITIVE: '/stock/adjust/positive',
+  ADJUST_NEGATIVE: '/stock/adjust/negative',
 };
 
 export const CATEGORY_ENDPOINTS = {
