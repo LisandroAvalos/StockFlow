@@ -28,3 +28,8 @@ export interface SaleDetailCreateRequest {
 export interface SaleCreateRequest {
   details: SaleDetailCreateRequest[];
 }
+
+export interface BestSellingProductResponse {
+  product: ProductResponse;
+  totalSold: number;
+}

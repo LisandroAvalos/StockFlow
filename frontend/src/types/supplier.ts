@@ -7,3 +7,5 @@ export interface SupplierResponse {
   }
   
   export type SupplierCreateRequest = Omit<SupplierResponse, 'id' | 'active'>;
+
+export type SupplierUpdateRequest = SupplierCreateRequest;

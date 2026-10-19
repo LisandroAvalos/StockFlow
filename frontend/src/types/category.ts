@@ -4,3 +4,5 @@ export interface CategoryResponse {
 }
 
 export type CategoryCreateRequest = Omit<CategoryResponse, 'id'>;
+
+export type CategoryUpdateRequest = CategoryCreateRequest;
