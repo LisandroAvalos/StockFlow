@@ -31,3 +31,8 @@ export async function updateProduct(
   );
   return response.data;
 }
+
+export async function getLowStockProducts(): Promise<ProductResponse[]> {
+  const response = await axiosClient.get<ProductResponse[]>(PRODUCT_ENDPOINTS.LOW_STOCK);
+  return response.data;
+}

@@ -37,3 +37,8 @@ export async function adjustStockNegative(
   );
   return response.data;
 }
+
+export async function getAllStockMovements(): Promise<StockMovementResponse[]> {
+  const response = await axiosClient.get<StockMovementResponse[]>(STOCK_ENDPOINTS.BASE);
+  return response.data;
+}
