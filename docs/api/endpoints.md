@@ -8,7 +8,7 @@ POST /auth/login (Público. Login con email y password. Devuelve token, id, nomb
 
 ## Categorías
 GET /categories (Autenticado. Listar categorías activas)
-GET /categories/{id} (Autenticado. Buscar por ID)
+GET /categories/id/{id} (Autenticado. Buscar por ID)
 GET /categories/name/{name} (Autenticado. Buscar por nombre exacto)
 POST /categories (ADMIN. Crear categoría con name)
 PUT /categories/{id} (ADMIN. Actualizar nombre)
@@ -17,7 +17,7 @@ DELETE /categories/{id} (ADMIN. Baja lógica)
 ## Proveedores
 GET /suppliers (Autenticado. Listar proveedores activos)
 GET /suppliers/id/{id} (Autenticado. Buscar por ID)
-GET /suppliers/name/{name} (Autenticado. Buscar por nombre exacto)
+GET /suppliers/name?name= (Autenticado. Buscar por nombre exacto)
 GET /suppliers/email/{email} (Autenticado. Buscar por email)
 POST /suppliers (ADMIN. Crear proveedor con name, telephone, email)
 PUT /suppliers/{id} (ADMIN. Actualizar datos)
@@ -87,5 +87,5 @@ DELETE /users/{id} (ADMIN. Baja lógica)
 ## Notas generales
 Soft delete: Category, Supplier, Product y User no se borran físicamente, el campo active pasa a false.
 Errores: Manejo global. 404 para recursos no encontrados, 400 para validaciones o reglas de negocio, 401 para credenciales inválidas.
-CORS: Habilitado para http://localhost:5173
+CORS: Habilitado para http://localhost:5173 (métodos GET, POST, PUT, PATCH, DELETE y OPTIONS)
 Fechas: Formato LocalDateTime ISO 8601 (YYYY-MM-DDTHH:mm:ss)
