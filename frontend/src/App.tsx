@@ -7,13 +7,17 @@ import ProductDetail from './features/products/pages/ProductDetail';
 import EditProduct from './features/products/pages/EditProduct';
 import Categories from './features/categories/pages/Categories';
 import CreateCategory from './features/categories/pages/CreateCategory';
+import EditCategory from './features/categories/pages/EditCategory';
 import Suppliers from './features/suppliers/pages/Suppliers';
 import CreateSupplier from './features/suppliers/pages/CreateSupplier';
+import EditSupplier from './features/suppliers/pages/EditSupplier';
+import StockMovements from './features/stock/pages/StockMovements';
 import Sales from './features/sales/pages/Sales';
 import CreateSale from './features/sales/pages/CreateSale';
 import SaleDetail from './features/sales/pages/SaleDetail';
 import Reports from './features/reports/pages/Reports';
 import Users from './features/admin/pages/Users';
+import CreateUser from './features/admin/pages/CreateUser';
 import Layout from './layout/Layout';
 import PrivateRoute from './routes/PrivateRoute';
 import AdminRoute from './routes/AdminRoute';
@@ -59,6 +63,14 @@ function App() {
             </AdminRoute>
           }
         />
+        <Route
+          path="/categorias/:id/editar"
+          element={
+            <AdminRoute>
+              <EditCategory />
+            </AdminRoute>
+          }
+        />
         <Route path="/proveedores" element={<Suppliers />} />
         <Route
           path="/proveedores/nuevo"
@@ -68,6 +80,15 @@ function App() {
             </AdminRoute>
           }
         />
+        <Route
+          path="/proveedores/:id/editar"
+          element={
+            <AdminRoute>
+              <EditSupplier />
+            </AdminRoute>
+          }
+        />
+        <Route path="/movimientos" element={<StockMovements />} />
         <Route path="/ventas" element={<Sales />} />
         <Route path="/ventas/nueva" element={<CreateSale />} />
         <Route path="/ventas/:id" element={<SaleDetail />} />
@@ -77,6 +98,14 @@ function App() {
           element={
             <AdminRoute>
               <Users />
+            </AdminRoute>
+          }
+        />
+        <Route
+          path="/usuarios/nuevo"
+          element={
+            <AdminRoute>
+              <CreateUser />
             </AdminRoute>
           }
         />
